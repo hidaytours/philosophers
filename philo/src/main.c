@@ -1,4 +1,4 @@
-#include "main.h"
+#include "philo.h"
 
 static void	print_philo_for_debug(t_philo *p, int argc)
 {
@@ -10,7 +10,7 @@ static void	print_philo_for_debug(t_philo *p, int argc)
 		printf("num_of_times_each_philos_must_eat	:	%zu\n", p->num_of_times_each_philos_must_eat);
 }
 
-static bool	set_philo(t_philo *p, int argc, char **argv)
+static bool	set_input(t_philo *p, int argc, char **argv)
 {
 	if (set_size_t_from_str(&p->num_of_philos, argv[1]))
 		return (true);
@@ -32,12 +32,11 @@ int	main(int argc, char **argv)
 
 	if (is_invalid_args(argc, argv))
 		return (1);
-	if (set_philo(&philo, argc, argv))
+	if (set_input(&philo, argc, argv))
 	{
 		printf("Over flow!\n");
 		return (1);
 	}
-	printf("Hello, Wolrd!\n");
 	print_philo_for_debug(&philo, argc);
 	return (0);
 }
