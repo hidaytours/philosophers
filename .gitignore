@@ -1,0 +1,6 @@
+/philo/philo
+*.o
+*.out
+*.a
+*.txt
+*.test.*
