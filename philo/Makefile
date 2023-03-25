@@ -1,7 +1,12 @@
 NAME = philo
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-SRCS = main.c
+INCLUDES = -I ./include
+CFLAGS = -Wall -Wextra -Werror $(INCLUDES)
+DIR_SRC = ./src
+SRCS =	$(DIR_SRC)/main.c	\
+		$(DIR_SRC)/validation.c	\
+		$(DIR_SRC)/convert.c
+
 OBJS = $(SRCS:.c=.o)
 
 all:	$(NAME)
