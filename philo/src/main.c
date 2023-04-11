@@ -1,6 +1,6 @@
 #include "philo.h"
 
-static void	print_philo_for_debug(t_philo *p, int argc)
+static void	print_philo_for_debug(t_dining_table *p, int argc)
 {
 	printf("num_of_philos				:	%zu\n", p->num_of_philos);
 	printf("ms_to_die				:	%u\n", p->ms_to_die);
@@ -10,7 +10,7 @@ static void	print_philo_for_debug(t_philo *p, int argc)
 		printf("num_of_times_each_philos_must_eat	:	%zu\n", p->num_of_times_each_philos_must_eat);
 }
 
-static bool	set_input(t_philo *p, int argc, char **argv)
+static bool	set_input(t_dining_table *p, int argc, char **argv)
 {
 	if (set_size_t_from_str(&p->num_of_philos, argv[1]))
 		return (true);
@@ -28,15 +28,25 @@ static bool	set_input(t_philo *p, int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_philo philo;
+	t_dining_table dtable;
+	//struct timeval time;
 
 	if (is_invalid_args(argc, argv))
 		return (1);
-	if (set_input(&philo, argc, argv))
+	if (set_input(&dtable, argc, argv))
 	{
 		printf("Over flow!\n");
 		return (1);
 	}
-	print_philo_for_debug(&philo, argc);
+	// philo.philos = malloc(sizeof(pthread_t) * philo.num_of_philos);
+	// if (!philo.philos)
+	// {
+	// 	printf("allocation error.");
+	// 	return (1);
+	// }
+	// gettimeofday(&time, NULL);
+	// printf("%ld : %d\n", time.tv_sec, time.tv_usec);
+	print_philo_for_debug(&dtable, argc);
+	//free(philo.philos);
 	return (0);
 }
