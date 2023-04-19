@@ -5,7 +5,7 @@ CFLAGS = -Wall -Wextra -Werror $(INCLUDES)
 DIR_SRC = ./src
 SRCS =	$(DIR_SRC)/main.c	\
 		$(DIR_SRC)/validation.c	\
-		$(DIR_SRC)/convert.c
+		$(DIR_SRC)/input.c
 
 OBJS = $(SRCS:.c=.o)
 

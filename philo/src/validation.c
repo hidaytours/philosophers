@@ -8,7 +8,7 @@ static void	print_usage(void)
 
 static bool	is_invalid_num_of_args(int argc)
 {
-	if (argc !=5 && argc != 6)
+	if (argc != 5 && argc != 6)
 	{
 		print_usage();
 		return (true);
@@ -34,7 +34,7 @@ static bool	format_err(char *name_arg, char *arg, bool has_invalid)
 {
 	if (!has_invalid)
 		print_usage();
-	printf("Invalid!:	%s:	%s:	Enter unsigned number.\n", name_arg, arg);
+	printf("Invalid format:	%s:	%s:	Enter unsigned number.\n", name_arg, arg);
 	return (true);
 }
 
