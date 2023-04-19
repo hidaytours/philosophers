@@ -12,7 +12,8 @@ typedef struct s_dining_table
 	useconds_t		ms_to_die;
 	useconds_t		ms_to_eat;
 	useconds_t		ms_to_sleep;
-	size_t			num_of_times_must_eat;
+	bool			has_quota;
+	size_t			quota_of_times_to_eat;
 	useconds_t		ms_begin;
 	struct s_philo	*philos;
 	pthread_mutex_t	*forks;

@@ -2,7 +2,7 @@
 
 static void	print_usage(void)
 {
-	printf("usage: ./philo %s %s ", NAME_ARG1, NAME_ARG2);
+	printf("Usage: ./philo %s %s ", NAME_ARG1, NAME_ARG2);
 	printf("%s %s [%s]\n", NAME_ARG3, NAME_ARG4, NAME_ARG5);
 }
 
