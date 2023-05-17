@@ -5,6 +5,8 @@
 
 # include <unistd.h>
 # include <stdint.h>
+# include <sys/time.h>
+# include <pthread.h>
 
 struct	s_philo;
 
@@ -26,11 +28,11 @@ typedef struct s_dining_table
 typedef struct s_philo
 {
 	size_t			times_ate;
-	useconds_t		ms_last_ate;
+	size_t			ms_last_ate;
 	pthread_mutex_t	*fork_r;
 	pthread_mutex_t	*fork_l;
 	bool			is_eating;
-	size_t			num;
+	size_t			i;
 	pthread_t		id;
 	pthread_t		monitor_id;
 	t_dining_table	*dtable_p;

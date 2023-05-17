@@ -6,6 +6,7 @@
 
 typedef struct timeval	t_timeval;
 
+size_t  get_ms_now(void);
 size_t	get_timestamp(size_t ms_begin);
 
 #endif

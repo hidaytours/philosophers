@@ -1,11 +1,14 @@
 #include "timestamp.h"
 
-size_t	get_timestamp(size_t ms_begin)
+size_t	get_ms_now(void)
 {
-	size_t		ms;
 	t_timeval	timeval;
 
 	gettimeofday(&timeval, NULL);
-	ms = timeval.tv_sec * 1000 + timeval.tv_usec / 1000;
-	return (ms - ms_begin);
+	return (timeval.tv_sec * 1000 + timeval.tv_usec / 1000);
+}
+
+size_t	get_timestamp(size_t ms_begin)
+{
+	return (get_ms_now() - ms_begin);
 }

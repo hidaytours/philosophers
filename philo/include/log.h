@@ -12,4 +12,8 @@
 # define LOG_THINK		" is thinking\n"
 # define LOG_DIE			" died\n"
 
+void	print_log(size_t timestamp, size_t num_philo, char *content);
+void    take_log(t_philo *philo_p, char *content);
+void    take_log_die(t_philo *philo_p);
+
 #endif

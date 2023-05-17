@@ -46,6 +46,8 @@ bool	input_args(t_dining_table *p, int argc, char **argv)
 {
 	p->has_quota = false;
 	p->should_end = false;
+	p->forks = NULL;
+	p->philos = NULL;
 	if (is_invalid_args(argc, argv))
 		return (true);
 	if (set_size_t_from_str(&p->num_of_philos, argv[1], NAME_ARG1))
