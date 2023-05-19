@@ -15,10 +15,10 @@ void	*routine_philo(void *p)
 		pthread_mutex_lock(philo_p->fork_l);
 		take_log(philo_p, LOG_TAKE_FORK);
 		philo_p->is_eating = true;
+		philo_p->ms_last_ate = get_timestamp(philo_p->dtable_p->ms_begin);
 		take_log(philo_p, LOG_EAT);
 		usleep((philo_p->dtable_p)->ms_to_eat * 1000);
 		philo_p->times_ate++;
-		philo_p->ms_last_ate = get_timestamp(philo_p->dtable_p->ms_begin);
 		philo_p->is_eating = false;
 		pthread_mutex_unlock(philo_p->fork_l);
 		pthread_mutex_unlock(philo_p->fork_r);
