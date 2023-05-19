@@ -34,9 +34,9 @@ static void	put_num(size_t num)
 
 void	print_log(size_t timestamp, size_t num_philo, char *content)
 {
-	// put_num(timestamp);
-	// put_str("	");
-	// put_num(num_philo);
-	// put_str(content);
+	//put_num(timestamp);
+	//put_str("	");
+	//put_num(num_philo);
+	//put_str(content);
 	printf("%zu	%zu%s", timestamp, num_philo, content);
 }
