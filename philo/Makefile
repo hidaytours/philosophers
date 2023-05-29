@@ -5,6 +5,7 @@ CFLAGS = -Wall -Wextra -Werror $(INCLUDES) #-fsanitize=thread
 DIR_SRC = ./src
 SRCS =	$(DIR_SRC)/validation.c	\
 		$(DIR_SRC)/input.c	\
+		$(DIR_SRC)/signboard.c	\
 		$(DIR_SRC)/finalize.c	\
 		$(DIR_SRC)/log.c	\
 		$(DIR_SRC)/print_log.c	\

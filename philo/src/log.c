@@ -7,7 +7,7 @@ void	take_log(t_philo *philo_p, char *content)
 
 	chalk_p = &(philo_p->dtable_p->chalk);
 	pthread_mutex_lock(chalk_p);
-	if (!philo_p->dtable_p->should_end)
+	if (!sb_is_closed(&(philo_p->dtable_p->sb)))
 	{
 		timestamp = get_timestamp(philo_p->dtable_p->ms_begin);
 		print_log(timestamp, philo_p->i + 1, content);
@@ -22,9 +22,9 @@ void	take_log_die(t_philo *philo_p)
 
 	chalk_p = &(philo_p->dtable_p->chalk);
 	pthread_mutex_lock(chalk_p);
-	if (!philo_p->dtable_p->should_end)
+	if (!sb_is_closed(&(philo_p->dtable_p->sb)))
 	{
-		philo_p->dtable_p->should_end = true;
+		sb_close(&(philo_p->dtable_p->sb));
 		timestamp = get_timestamp(philo_p->dtable_p->ms_begin);
 		print_log(timestamp, philo_p->i + 1, LOG_DIE);
 	}

@@ -2,6 +2,7 @@
 # define INPUT_H
 
 # include "validation.h"
+# include "signboard.h"
 
 # include <unistd.h>
 # include <stdint.h>
@@ -22,13 +23,15 @@ typedef struct s_dining_table
 	struct s_philo	**philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	chalk;
-	bool			should_end;
+	t_signboard		sb;
+	pthread_t		quota_id;
 }	t_dining_table;
 
 typedef struct s_philo
 {
 	size_t			times_ate;
 	size_t			ms_last_ate;
+	pthread_mutex_t	m_philo;
 	pthread_mutex_t	*fork_r;
 	pthread_mutex_t	*fork_l;
 	bool			is_eating;

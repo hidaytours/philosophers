@@ -45,7 +45,6 @@ static bool	set_usec_from_str(useconds_t *usec_p, char *str, char *name_arg)
 bool	input_args(t_dining_table *p, int argc, char **argv)
 {
 	p->has_quota = false;
-	p->should_end = false;
 	p->forks = NULL;
 	p->philos = NULL;
 	if (is_invalid_args(argc, argv))
