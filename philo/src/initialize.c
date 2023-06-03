@@ -27,7 +27,7 @@ static bool	prepare_philos(t_dining *p)
 	i = 0;
 	while (i < p->num_of_philos)
 	{
-		if (ph_init(&(p->philos[i]), i, p))
+		if (philo_init(&(p->philos[i]), i, p))
 			return (clear_dining(0, i, p->num_of_philos, p));
 		i++;
 	}

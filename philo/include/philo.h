@@ -41,9 +41,9 @@ typedef struct s_philo
 	t_dining		*dining_p;
 }	t_philo;
 
-bool	ph_init(t_philo **p, const size_t n, t_dining *d_p);
-void	ph_fin(t_philo *p);
-void	ph_before_eat(t_philo *p);
-void	ph_after_eat(t_philo *p);
+bool	philo_init(t_philo **p, const size_t n, t_dining *d_p);
+void	philo_fin(t_philo *p);
+void	philo_before_eat(t_philo *p);
+void	philo_after_eat(t_philo *p);
 
 #endif

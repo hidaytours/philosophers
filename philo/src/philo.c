@@ -1,6 +1,6 @@
 #include "philo.h"
 
-bool	ph_init(t_philo **p, const size_t n, t_dining *dining_p)
+bool	philo_init(t_philo **p, const size_t n, t_dining *dining_p)
 {
 	*p = malloc(sizeof(t_philo));
 	if (!*p)
@@ -28,13 +28,13 @@ bool	ph_init(t_philo **p, const size_t n, t_dining *dining_p)
 	return (false);
 }
 
-void	ph_fin(t_philo *p)
+void	philo_fin(t_philo *p)
 {
 	pthread_mutex_destroy(&(p->mutex));
 	free(p);
 }
 
-void	ph_before_eat(t_philo *p)
+void	philo_before_eat(t_philo *p)
 {
 	pthread_mutex_lock(&(p->mutex));
 	p->is_eating = true;
@@ -42,7 +42,7 @@ void	ph_before_eat(t_philo *p)
 	pthread_mutex_unlock(&(p->mutex));
 }
 
-void	ph_after_eat(t_philo *p)
+void	philo_after_eat(t_philo *p)
 {
 	pthread_mutex_lock(&(p->mutex));
 	p->times_ate++;

@@ -13,10 +13,10 @@ void	*routine_philo(void *p)
 		pthread_mutex_lock(philo_p->fork_r);
 		pthread_mutex_lock(philo_p->fork_l);
 		log_take_fork(philo_p);
-		ph_before_eat(philo_p);
+		philo_before_eat(philo_p);
 		log_eat(philo_p);
 		usleep((philo_p->dining_p)->ms_to_eat * 1000);
-		ph_after_eat(philo_p);
+		philo_after_eat(philo_p);
 		pthread_mutex_unlock(philo_p->fork_l);
 		pthread_mutex_unlock(philo_p->fork_r);
 		log_sleep(philo_p);

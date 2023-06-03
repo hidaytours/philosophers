@@ -14,7 +14,7 @@ bool	clear_dining(size_t n_th, size_t n_ph, size_t n_f, t_dining *p)
 	}
 	i = n_ph;
 	while (i > 0)
-		ph_fin(p->philos[i-- - 1]);
+		philo_fin(p->philos[i-- - 1]);
 	if (p->philos)
 		free(p->philos);
 	i = n_f;
