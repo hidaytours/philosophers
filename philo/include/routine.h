@@ -4,6 +4,7 @@
 # include "philo.h"
 # include "log.h"
 
+void	*routine_philo_one(void *p);
 void	*routine_philo(void *p);
 void	*routine_alive(void	*p);
 void	*routine_quota(void	*p);

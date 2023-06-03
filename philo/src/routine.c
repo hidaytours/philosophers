@@ -1,5 +1,14 @@
 #include "routine.h"
 
+void	*routine_philo_one(void *p)
+{
+	t_philo			*philo_p;
+
+	philo_p = p;
+	log_think(philo_p);
+	return (NULL);
+}
+
 void	*routine_philo(void *p)
 {
 	t_philo			*philo_p;
