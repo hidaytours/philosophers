@@ -13,6 +13,7 @@ bool	philo_init(t_philo **p, const size_t n, t_dining *dining_p)
 	(*p)->times_ate = 0;
 	(*p)->ms_last_ate = 0;
 	(*p)->is_eating = false;
+	(*p)->has_quota_achieved = false;
 	(*p)->i = n;
 	if (n == 0)
 	{

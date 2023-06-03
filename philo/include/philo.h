@@ -35,6 +35,7 @@ typedef struct s_philo
 	pthread_mutex_t	*fork_r;
 	pthread_mutex_t	*fork_l;
 	bool			is_eating;
+	bool			has_quota_achieved;
 	size_t			i;
 	pthread_t		philo;
 	pthread_t		alive;

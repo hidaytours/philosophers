@@ -62,13 +62,17 @@ static bool	is_quota_achieved(t_philo **philos, size_t num_philos, size_t quota)
 	i = 0;
 	while (num_philos > i)
 	{
-		pthread_mutex_lock(&(philos[i]->mutex));
-		if (philos[i]->times_ate < quota)
+		if (!philos[i]->has_quota_achieved)
 		{
+			pthread_mutex_lock(&(philos[i]->mutex));
+			if (philos[i]->times_ate < quota)
+			{
+				pthread_mutex_unlock(&(philos[i]->mutex));
+				return (false);
+			}
+			philos[i]->has_quota_achieved = true;
 			pthread_mutex_unlock(&(philos[i]->mutex));
-			return (false);
 		}
-		pthread_mutex_unlock(&(philos[i]->mutex));
 		i++;
 	}
 	return (true);
