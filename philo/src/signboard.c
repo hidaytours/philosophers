@@ -1,6 +1,6 @@
 #include "signboard.h"
 
-bool	sb_init(t_signboard *p)
+int	sb_init(t_signboard *p)
 {
 	p->is_closed = false;
 	return (pthread_mutex_init(&(p->mutex), NULL));

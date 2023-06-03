@@ -9,7 +9,7 @@ typedef struct s_signboard {
 	pthread_mutex_t	mutex;
 }	t_signboard;
 
-bool	sb_init(t_signboard *p);
+int		sb_init(t_signboard *p);
 void	sb_fin(t_signboard *p);
 bool	sb_is_closed(t_signboard *p);
 void	sb_close(t_signboard *p);

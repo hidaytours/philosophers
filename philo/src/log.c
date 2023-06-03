@@ -1,32 +1,26 @@
 #include "log.h"
 
-void	take_log(t_philo *philo_p, char *content)
+void	log_think(t_philo *p)
 {
-	size_t timestamp;
-	pthread_mutex_t	*chalk_p;
-
-	chalk_p = &(philo_p->dtable_p->chalk);
-	pthread_mutex_lock(chalk_p);
-	if (!sb_is_closed(&(philo_p->dtable_p->sb)))
-	{
-		timestamp = get_timestamp(philo_p->dtable_p->ms_begin);
-		print_log(timestamp, philo_p->i + 1, content);
-	}
-	pthread_mutex_unlock(chalk_p);
+	chalk_use(p->dining_p, p->i + 1, LOG_THINK);
 }
 
-void	take_log_die(t_philo *philo_p)
+void	log_take_fork(t_philo *p)
 {
-	size_t			timestamp;
-	pthread_mutex_t	*chalk_p;
+	chalk_use(p->dining_p, p->i + 1, LOG_TAKE_FORK);
+}
 
-	chalk_p = &(philo_p->dtable_p->chalk);
-	pthread_mutex_lock(chalk_p);
-	if (!sb_is_closed(&(philo_p->dtable_p->sb)))
-	{
-		sb_close(&(philo_p->dtable_p->sb));
-		timestamp = get_timestamp(philo_p->dtable_p->ms_begin);
-		print_log(timestamp, philo_p->i + 1, LOG_DIE);
-	}
-	pthread_mutex_unlock(chalk_p);
+void	log_eat(t_philo *p)
+{
+	chalk_use(p->dining_p, p->i + 1, LOG_EAT);
+}
+
+void	log_sleep(t_philo *p)
+{
+	chalk_use(p->dining_p, p->i + 1, LOG_SLEEP);
+}
+
+void	log_die(t_philo *p)
+{
+	chalk_use_and_close(p->dining_p, p->i + 1, LOG_DIE);
 }

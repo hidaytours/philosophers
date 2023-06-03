@@ -1,19 +1,18 @@
 #ifndef LOG_H
 # define LOG_H
 
-# include "input.h"
-# include "timestamp.h"
-# include <unistd.h>
-# include <pthread.h>
+# include "chalk.h"
 
-# define LOG_TAKE_FORK	" has taken a fork\n"
-# define LOG_EAT			" is eating\n"
-# define LOG_SLEEP		" is sleeping\n"
-# define LOG_THINK		" is thinking\n"
-# define LOG_DIE			" died\n"
+# define LOG_TAKE_FORK	"has taken a fork"
+# define LOG_EAT		"is eating"
+# define LOG_SLEEP		"is sleeping"
+# define LOG_THINK		"is thinking"
+# define LOG_DIE		"died"
 
-void	print_log(size_t timestamp, size_t num_philo, char *content);
-void    take_log(t_philo *philo_p, char *content);
-void    take_log_die(t_philo *philo_p);
+void	log_think(t_philo *p);
+void	log_take_fork(t_philo *p);
+void	log_eat(t_philo *p);
+void	log_sleep(t_philo *p);
+void	log_die(t_philo *p);
 
 #endif

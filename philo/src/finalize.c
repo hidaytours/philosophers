@@ -1,6 +1,6 @@
 #include "finalize.h"
 
-bool	clear_table(size_t n_th, size_t n_ph, size_t n_f, t_dining_table *p)
+bool	clear_dining(size_t n_th, size_t n_ph, size_t n_f, t_dining *p)
 {
 	size_t	i;
 
@@ -8,15 +8,13 @@ bool	clear_table(size_t n_th, size_t n_ph, size_t n_f, t_dining_table *p)
 	i = n_th;
 	while (i > 0)
 	{
-		pthread_detach(p->philos[i - 1]->id);
-		pthread_detach(p->philos[i-- - 1]->monitor_id);
+		pthread_detach(p->philos[i - 1]->philo);
+		pthread_detach(p->philos[i - 1]->alive);
+		i--;
 	}
 	i = n_ph;
 	while (i > 0)
-	{
-		pthread_mutex_destroy(&((p->philos)[i - 1]->m_philo));
-		free(p->philos[i-- - 1]);
-	}
+		ph_fin(p->philos[i-- - 1]);
 	if (p->philos)
 		free(p->philos);
 	i = n_f;
@@ -24,7 +22,7 @@ bool	clear_table(size_t n_th, size_t n_ph, size_t n_f, t_dining_table *p)
 		pthread_mutex_destroy(&(p->forks)[i-- - 1]);
 	if (p->forks)
 		free(p->forks);
-	pthread_mutex_destroy(&(p->chalk));
+	chalk_fin(&(p->chalk));
 	sb_fin(&(p->sb));
 	return (true);
 }
