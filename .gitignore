@@ -3,5 +3,6 @@
 *.out
 *.a
 *.txt
+*.log
 *.test.*
 .vscode
