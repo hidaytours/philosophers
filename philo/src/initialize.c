@@ -36,16 +36,8 @@ static bool	prepare_philos(t_dining *p)
 
 static bool	prepare_threads_philo(size_t i, size_t num, t_philo *p)
 {
-	if (num == 1)
-	{
-		if (pthread_create(&(p->philo), NULL, routine_philo_one, p))
-			return (clear_dining(i, num, num, p->dining_p));
-	}
-	else
-	{
-		if (pthread_create(&(p->philo), NULL, routine_philo, p))
-			return (clear_dining(i, num, num, p->dining_p));
-	}
+	if (pthread_create(&(p->philo), NULL, routine_philo, p))
+		return (clear_dining(i, num, num, p->dining_p));
 	if (pthread_create(&(p->alive), NULL, routine_alive, p))
 	{
 		pthread_detach(p->philo);

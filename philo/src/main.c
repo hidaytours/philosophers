@@ -12,7 +12,10 @@ int	main(int argc, char **argv)
 	i = 0;
 	while (i < dining.num_of_philos)
 	{
-		pthread_join(dining.philos[i]->philo, NULL);
+		if (i == 0)
+			pthread_detach(dining.philos[i]->philo);
+		else
+			pthread_join(dining.philos[i]->philo, NULL);
 		pthread_join(dining.philos[i++]->alive, NULL);
 	}
 	if (dining.has_quota)

@@ -1,14 +1,5 @@
 #include "routine.h"
 
-void	*routine_philo_one(void *p)
-{
-	t_philo			*philo_p;
-
-	philo_p = p;
-	log_think(philo_p);
-	return (NULL);
-}
-
 void	*routine_philo(void *p)
 {
 	t_philo			*philo_p;
@@ -20,6 +11,7 @@ void	*routine_philo(void *p)
 	{
 		log_think(philo_p);
 		pthread_mutex_lock(philo_p->fork_r);
+		log_take_fork(philo_p);
 		pthread_mutex_lock(philo_p->fork_l);
 		log_take_fork(philo_p);
 		philo_before_eat(philo_p);
