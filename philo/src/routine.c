@@ -1,6 +1,6 @@
 #include "routine.h"
 
-bool	take_forks(t_philo	*p)
+static bool	take_forks(t_philo	*p)
 {
 	pthread_mutex_lock(p->fork_r);
 	log_take_fork(p);
