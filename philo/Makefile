@@ -1,7 +1,7 @@
 NAME = philo
 CC = cc
 INCLUDES = -I ./include
-CFLAGS = -Wall -Wextra -Werror $(INCLUDES) -fsanitize=thread
+CFLAGS = -Wall -Wextra -Werror $(INCLUDES) #-fsanitize=thread
 DIR_SRC = ./src
 SRCS =	$(DIR_SRC)/validation.c	\
 		$(DIR_SRC)/signboard.c	\

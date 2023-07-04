@@ -1,5 +1,19 @@
 #include "routine.h"
 
+bool	take_forks(t_philo	*p)
+{
+	pthread_mutex_lock(p->fork_r);
+	log_take_fork(p);
+	if (p->fork_l == p->fork_r)
+	{
+		pthread_mutex_unlock(p->fork_r);
+		return (true);
+	}
+	pthread_mutex_lock(p->fork_l);
+	log_take_fork(p);
+	return (false);
+}
+
 void	*routine_philo(void *p)
 {
 	t_philo			*philo_p;
@@ -10,10 +24,8 @@ void	*routine_philo(void *p)
 	while (!sb_is_closed(&(dining_p->sb)))
 	{
 		log_think(philo_p);
-		pthread_mutex_lock(philo_p->fork_r);
-		log_take_fork(philo_p);
-		pthread_mutex_lock(philo_p->fork_l);
-		log_take_fork(philo_p);
+		if (take_forks(philo_p))
+			return (NULL);
 		philo_before_eat(philo_p);
 		log_eat(philo_p);
 		usleep((philo_p->dining_p)->ms_to_eat * 1000);
