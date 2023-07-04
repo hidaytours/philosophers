@@ -38,15 +38,15 @@ void	philo_fin(t_philo *p)
 void	philo_before_eat(t_philo *p)
 {
 	pthread_mutex_lock(&(p->mutex));
-	p->is_eating = true;
 	p->ms_last_ate = get_timestamp(p->dining_p->ms_begin);
+	p->is_eating = true;
 	pthread_mutex_unlock(&(p->mutex));
 }
 
 void	philo_after_eat(t_philo *p)
 {
 	pthread_mutex_lock(&(p->mutex));
-	p->times_ate++;
 	p->is_eating = false;
+	p->times_ate++;
 	pthread_mutex_unlock(&(p->mutex));
 }
