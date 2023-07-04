@@ -17,8 +17,8 @@ bool	philo_init(t_philo **p, const size_t n, t_dining *dining_p)
 	(*p)->i = n;
 	if (n == 0)
 	{
-		(*p)->fork_l = &(dining_p->forks[dining_p->num_of_philos - 1]);
-		(*p)->fork_r = &(dining_p->forks[0]);
+		(*p)->fork_r = &(dining_p->forks[dining_p->num_of_philos - 1]);
+		(*p)->fork_l = &(dining_p->forks[0]);
 	}
 	else
 	{
@@ -38,15 +38,15 @@ void	philo_fin(t_philo *p)
 void	philo_before_eat(t_philo *p)
 {
 	pthread_mutex_lock(&(p->mutex));
-	p->ms_last_ate = get_timestamp(p->dining_p->ms_begin);
 	p->is_eating = true;
+	p->ms_last_ate = get_timestamp(p->dining_p->ms_begin);
 	pthread_mutex_unlock(&(p->mutex));
 }
 
 void	philo_after_eat(t_philo *p)
 {
 	pthread_mutex_lock(&(p->mutex));
-	p->is_eating = false;
 	p->times_ate++;
+	p->is_eating = false;
 	pthread_mutex_unlock(&(p->mutex));
 }

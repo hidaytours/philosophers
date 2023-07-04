@@ -21,6 +21,8 @@ void	*routine_philo(void *p)
 
 	philo_p = p;
 	dining_p = philo_p->dining_p;
+	if (philo_p->i % 2)
+		usleep(R_INTERVAL);
 	while (!sb_is_closed(&(dining_p->sb)))
 	{
 		log_think(philo_p);
@@ -34,7 +36,7 @@ void	*routine_philo(void *p)
 		pthread_mutex_unlock(philo_p->fork_r);
 		log_sleep(philo_p);
 		usleep((philo_p->dining_p)->ms_to_sleep * 1000);
-		usleep(10);
+		usleep(R_INTERVAL);
 	}
 	return (NULL);
 }
@@ -54,7 +56,7 @@ void	*routine_alive(void	*p)
 		if (!philo_p->is_eating && elapsed > dining_p->ms_to_die)
 			log_die(philo_p);
 		pthread_mutex_unlock(&(philo_p->mutex));
-		usleep(10);
+		usleep(R_INTERVAL);
 	}
 	return (NULL);
 }
@@ -100,7 +102,7 @@ void	*routine_quota(void	*p)
 			sb_close(&(dining_p->sb));
 			return (NULL);
 		}
-		usleep(1);
+		usleep(R_INTERVAL);
 	}
 	return (NULL);
 }
