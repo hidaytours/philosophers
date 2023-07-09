@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   routine.c                                          :+:      :+:    :+:   */
+/*   routine_others.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: toryoshi <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,47 +11,6 @@
 /* ************************************************************************** */
 
 #include "routine.h"
-
-static bool	take_forks(t_philo	*p)
-{
-	pthread_mutex_lock(p->fork_r);
-	log_take_fork(p);
-	if (p->fork_l == p->fork_r)
-	{
-		pthread_mutex_unlock(p->fork_r);
-		return (true);
-	}
-	pthread_mutex_lock(p->fork_l);
-	log_take_fork(p);
-	return (false);
-}
-
-void	*routine_philo(void *p)
-{
-	t_philo			*philo_p;
-	t_dining		*dining_p;
-
-	philo_p = p;
-	dining_p = philo_p->dining_p;
-	if (philo_p->i % 2)
-		usleep(R_INTERVAL);
-	while (!sb_is_closed(&(dining_p->sb)))
-	{
-		log_think(philo_p);
-		if (take_forks(philo_p))
-			return (NULL);
-		philo_before_eat(philo_p);
-		log_eat(philo_p);
-		usleep((philo_p->dining_p)->ms_to_eat * 1000);
-		philo_after_eat(philo_p);
-		pthread_mutex_unlock(philo_p->fork_l);
-		pthread_mutex_unlock(philo_p->fork_r);
-		log_sleep(philo_p);
-		usleep((philo_p->dining_p)->ms_to_sleep * 1000);
-		usleep(R_INTERVAL);
-	}
-	return (NULL);
-}
 
 void	*routine_alive(void	*p)
 {
