@@ -31,22 +31,25 @@ static bool	is_invalid_num_of_args(int argc)
 static bool	is_only_num_char(char *str)
 {
 	size_t	i;
+	bool	is_num;
 
+	is_num = false;
 	i = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] < '0' || str[i] > '9')
 			return (false);
+		is_num = true;
 		i++;
 	}
-	return (true);
+	return (is_num);
 }
 
 static bool	format_err(char *name_arg, char *arg, bool has_invalid)
 {
 	if (!has_invalid)
 		print_usage();
-	printf("Invalid format:	%s:	%s:	Enter unsigned number.\n", name_arg, arg);
+	printf("Invalid format:	%s:	%s:	Enter unsigned integer.\n", name_arg, arg);
 	return (true);
 }
 
