@@ -18,6 +18,12 @@ static bool	overflow(char *name_arg, char *str)
 	return (true);
 }
 
+static bool	zero(char *name_arg, char *str)
+{
+	printf("Invalid number: %s: %s: enter a value greater than 0.\n", name_arg, str);
+	return (true);
+}
+
 static bool	set_size_t_from_str(size_t *size_t_p, char *str, char *name_arg)
 {
 	size_t	i;
@@ -32,6 +38,8 @@ static bool	set_size_t_from_str(size_t *size_t_p, char *str, char *name_arg)
 		total = total * 10 + (str[i] - '0');
 		i++;
 	}
+	if (total == 0)
+		return (zero(name_arg, str));
 	*size_t_p = total;
 	return (false);
 }
@@ -50,6 +58,8 @@ static bool	set_usec_from_str(useconds_t *usec_p, char *str, char *name_arg)
 		total = total * 10 + (str[i] - '0');
 		i++;
 	}
+	if (total == 0)
+		return (zero(name_arg, str));
 	*usec_p = total;
 	return (false);
 }
