@@ -14,7 +14,7 @@
 
 static bool	out_of_range(char *name_arg, char *str)
 {
-	printf("Invalid number: %s: %s: enter a value between 1 and 1000.\n", name_arg, str);
+	printf("Invalid number: %s: %s: enter a value 1~1000.\n", name_arg, str);
 	return (true);
 }
 
