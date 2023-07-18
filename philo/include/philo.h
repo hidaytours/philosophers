@@ -26,9 +26,9 @@ struct	s_philo;
 typedef struct s_dining
 {
 	size_t			num_of_philos;
-	useconds_t		ms_to_die;
-	useconds_t		ms_to_eat;
-	useconds_t		ms_to_sleep;
+	unsigned int	ms_to_die;
+	unsigned int	ms_to_eat;
+	unsigned int	ms_to_sleep;
 	bool			has_quota;
 	size_t			quota_of_times_to_eat;
 	size_t			ms_begin;
